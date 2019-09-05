@@ -39,9 +39,12 @@ public class LoginServlet extends HttpServlet {
         System.out.println("得到客户机请求方式: " + request.getMethod());
 
         if("admin".equals(name)&&"111".equals(password))
+            //服务端跳转
             request.getRequestDispatcher("success.html").forward(request, response);
         else
-      //      response.sendRedirect("register.html");
+            //客户端跳转，302跳转，临时性的
+      //    response.sendRedirect("register.html");
+            //301客户端调整，永久性的
             response.setStatus(301);
             response.setHeader("Location", "upload.html");
 
